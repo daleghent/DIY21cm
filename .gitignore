@@ -1,0 +1,7 @@
+# Mac OS generated files
+.DS_Store
+.DS_Store?
+
+*.pyc
+*.pdf
+*.png
