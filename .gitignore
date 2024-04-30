@@ -5,3 +5,5 @@
 *.pyc
 *.pdf
 *.png
+
+input/planck_maps/
