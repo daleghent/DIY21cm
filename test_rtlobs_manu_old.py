@@ -30,7 +30,7 @@ gain = 49.6 # [dB] of RtlSdr gain
 #bandwidth = 2.32e6  # [Hz] sample rate/bandwidth
 bandwidth = 3.2e6  # [Hz] sample rate/bandwidth. Try to max it out, limited by the hardware
 centerFrequency = nu21cm # [Hz] center frequency
-integrationTime = 5  #20  # [sec] integration time
+integrationTime = 10  #20  # [sec] integration time
 # get f [Hz], p [dB/Hz]
 f, p = col.run_spectrum_int(nSample, 
                             nBin, 
@@ -43,10 +43,8 @@ f, p = col.run_spectrum_int(nSample,
 #print(f)
 #print(p)
 
-pdb = 10. * np.log10(p)
-
 # Show the figure containing the plotted spectrum
-fig, ax = post.plot_spectrum(f, pdb, savefig='./figures/sandbox/spectrum_'+str(integrationTime)+'sec.pdf')
+fig, ax = post.plot_spectrum(f, p, savefig='./figures/sandbox/spectrum_'+str(integrationTime)+'sec.pdf')
 #fig.show()
 fig.clf()
 
@@ -64,16 +62,14 @@ gain = 49.6 # [dB] of RtlSdr gain
 bandwidth = 3.2e6  # [Hz] sample rate/bandwidth. Try to max it out, limited by the hardware
 centerFrequency = nu21cm # [Hz] center frequency
 #throwFrequency = nu21cm + 1.e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
-#throwFrequency = nu21cm + 2.5e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
-throwFrequency = nu21cm + 3.e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
+throwFrequency = nu21cm + 1.5e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
 # Too bad, I would like a shift of 3.e6 Hz for my 21cm line...
 alternatingFrequency = 1.   # [Hz] frequency at which we switch between fiducial and shifted freqs
-integrationTime = 5 # [sec] integration time
+integrationTime = 10 # [sec] integration time
 # this time, the integration time is split between the fiducial and shifted freqs,
 # so the integration time on the fiducial freq is half of this number.
 # get f [Hz], p [V^2/Hz]
-#fOn, pOn, fOff, pOff, fFold, pFold = col.run_fswitch_int(nSample, 
-fOn, pOn, fOff, pOff = col.run_fswitch_int(nSample, 
+f, p = col.run_fswitch_int(nSample, 
                            nBin, 
                            gain, 
                            bandwidth, 
@@ -86,18 +82,14 @@ fOn, pOn, fOff, pOff = col.run_fswitch_int(nSample,
 #f, p = col.run_fswitch_int(262144, 2048, 49.6, 2.048e6, 399.75e6, 400.25e6, 30., fswitch=1)
 #f, p = col.run_fswitch_int(nSample, nBin, gain, bandwidth, centerFrequency, throwFrequency, integrationTime, fswitch=1)
 
+print(np.max(np.abs(p)))
+print(p)
 
 # convert p to [dB/Hz]
-pOndB = 10. * np.log10(pOn)
-pOffdB = 10. * np.log10(pOff)
-pDiffdB = 10. * np.log10(np.abs(pOn - pOff))
-#pFolddB = 10. * np.log10(np.abs(pFold))
+p = 10. * np.log10(np.abs(p))
 
 # Show the figure containing the plotted spectrum
-fig, ax = post.plot_spectrum(fOn, pOndB)
-ax.plot(fOff, pOffdB, label=r'Off')
-ax.plot(fOn, pDiffdB, label=r'Off')
-fig.savefig('./figures/sandbox/spectrum_fswitch_'+str(integrationTime)+'sec.pdf', bbox_inches='tight')
+fig, ax = post.plot_spectrum(f, p, savefig='./figures/sandbox/spectrum_fswitch_'+str(integrationTime)+'sec.pdf')
 #fig.show()
 fig.clf()
 
