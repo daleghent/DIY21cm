@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 # If running outside of the rtlobs github repo,
 # add path
@@ -63,9 +64,8 @@ gain = 49.6 # [dB] of RtlSdr gain
 #bandwidth = 2.32e6  # [Hz] sample rate/bandwidth
 bandwidth = 3.2e6  # [Hz] sample rate/bandwidth. Try to max it out, limited by the hardware
 centerFrequency = nu21cm # [Hz] center frequency
-#throwFrequency = nu21cm + 1.e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
-#throwFrequency = nu21cm + 2.5e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
-throwFrequency = nu21cm + 3.e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
+frequencyShift = 3.e6  # freq offset between fiducial and shifted frequency [Hz]
+throwFrequency = nu21cm + frequencyShift # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
 # Too bad, I would like a shift of 3.e6 Hz for my 21cm line...
 alternatingFrequency = 1.   # [Hz] frequency at which we switch between fiducial and shifted freqs
 integrationTime = 5 # [sec] integration time
@@ -86,17 +86,27 @@ fOn, pOn, fOff, pOff = col.run_fswitch_int(nSample,
 #f, p = col.run_fswitch_int(262144, 2048, 49.6, 2.048e6, 399.75e6, 400.25e6, 30., fswitch=1)
 #f, p = col.run_fswitch_int(nSample, nBin, gain, bandwidth, centerFrequency, throwFrequency, integrationTime, fswitch=1)
 
+pDiff = pOn - pOff
+pDiffSmart = pOn - np.mean(pOn)/np.mean(pOff) * pOff
 
 # convert p to [dB/Hz]
 pOndB = 10. * np.log10(pOn)
 pOffdB = 10. * np.log10(pOff)
 pDiffdB = 10. * np.log10(np.abs(pOn - pOff))
+pDiffSmartdB = 10. * np.log10(np.abs(pOn - np.mean(pOn)/np.mean(pOff) * pOff))
 #pFolddB = 10. * np.log10(np.abs(pFold))
 
 # Show the figure containing the plotted spectrum
-fig, ax = post.plot_spectrum(fOn, pOndB)
-ax.plot(fOff, pOffdB, label=r'Off')
-ax.plot(fOn, pDiffdB, label=r'Off')
+#fig, ax = post.plot_spectrum(fOn, pOndB, savefig='./figures/sandbox/spectrum_fswitch_'+str(integrationTime)+'sec.pdf')
+fig=plt.figure(0)
+ax=fig.add_subplot(111)
+ax.semilogy(fOn, pOn, label=r'On')
+ax.semilogy(fOff, pOff, label=r'Off')
+ax.semilogy(fOn, np.abs(pDiff), label=r'Diff')
+ax.semilogy(fOn, np.abs(pDiffSmart), label=r'DiffSmart')
+ax.legend(loc=1)
+ax.set_xlabel(r'freq [Hz]')
+ax.set_ylabel(r'P [V^2/Hz]')
 fig.savefig('./figures/sandbox/spectrum_fswitch_'+str(integrationTime)+'sec.pdf', bbox_inches='tight')
 #fig.show()
 fig.clf()
