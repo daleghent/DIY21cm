@@ -38,14 +38,25 @@ from rtlobs import utils as ut
 mountDeviceName = "AZ-GTi Equatorial WiFi"
 coordinatesPropertyName = "EQUATORIAL_EOD_COORD"
 
+# 21cm rest-frame frequency
+nu21cm = 1420405751.768 # [Hz]
+
 # exposure parameters
 param = {}
 param['nSample'] = 8192 # samples per call to the SDR
 param['nBin'] = 2048   # bin resolution power spectrum 
 param['gain'] = 49.6 # [dB] of RtlSdr gain
-param['bandwidth'] = 2.32e6  # [Hz] sample rate/bandwidth
-param['centerFrequency'] = 1.420e9 # [GHz] center frequency
-param['integrationTime'] = 3  #20  # [sec] integration time
+param['bandwidth'] = 3.2e6  # [Hz] sample rate/bandwidth
+param['centerFrequency'] = nu21cm # [GHz] center frequency
+param['integrationTime'] = 5  #20  # [sec] integration time
+
+# Frequency shifting parameters
+#throwFrequency = nu21cm + 1.e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
+frequencyShift = 2.5e6   # freq offset between fiducial and shifted frequencies [Hz]
+param['throwFrequency'] = nu21cm + frequencyShift # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
+# Too bad, I would like a shift of 3.e6 Hz for my 21cm line...
+param['alternatingFrequency'] = 1.   # [Hz] frequency at which we switch between fiducial and shifted freqs
+
 
 # create header for output file to log these parameters
 headerOutputFile =  "Exposure settings:\n"
@@ -53,8 +64,11 @@ headerOutputFile += "nSample = "+str(param['nSample'])+" # samples per call to t
 headerOutputFile += "nBin = "+str(param['nBin'])+" # bin resolution power spectrum \n"
 headerOutputFile += "gain = "+str(param['gain'])+" # [dB] of RtlSdr gain\n"
 headerOutputFile += "bandwidth = "+str(param['bandwidth'])+" # [Hz] sample rate/bandwidth\n"
-headerOutputFile += "centerFrequency = "+str(param['centerFrequency'])+" # [GHz] center frequency\n"
+headerOutputFile += "centerFrequency = "+str(param['centerFrequency'])+" # [Hz] center frequency\n"
 headerOutputFile += "integrationTime = "+str(param['integrationTime'])+" # [sec] integration time\n"
+headerOutputFile += "alternateFrequency = "+str(param['throwFrequency'])+" # [Hz] alternate frequency\n"
+headerOutputFile += "alternatingFrequency = "+str(param['alternatingFrequency'])+" # [Hz] alternating frequency\n"
+
 
 
 #################################################################
@@ -181,7 +195,7 @@ param['timeCapture'] = datetime.now().strftime("%Hh%Mm%Ss")
 # File name
 fileName = "exposure_ra"+str(param['ra'])+"_dec"+str(param['dec'])
 fileName += "_"+str(param['integrationTime'])+"sec"
-fileName += param['dateCapture']+"_"+param['timeCapture']
+fileName += "_"+param['dateCapture']+"_"+param['timeCapture']
 
 # header
 headerOutputFile += "Equatorial coordinates:\n"
@@ -189,7 +203,7 @@ headerOutputFile += "ra = "+str(param['ra'])+" # [hours]\n"
 headerOutputFile += "dec = "+str(param['dec'])+" # [deg]\n"
 headerOutputFile += "Capture date = "+param['dateCapture']+"\n"
 headerOutputFile += "Capture time = "+param['timeCapture']+"\n"
-headerOutputFile += "freq [Hz], power [dB/Hz]\n"
+headerOutputFile += "freq [Hz], power On [V^2/Hz], power Off [V^2/Hz]\n"
 
 
 #################################################################
@@ -200,24 +214,48 @@ try:
    #ut.biast(0, index=0) # turn off bias tee, to power LNA
 
    # Take exposure: measure power spectrum
-   f, p = col.run_spectrum_int(param['nSample'], param['nBin'], param['gain'], param['bandwidth'], param['centerFrequency'], param['integrationTime'])
+   #f, p = col.run_spectrum_int(param['nSample'], param['nBin'], param['gain'], param['bandwidth'], param['centerFrequency'], param['integrationTime'])
+
+   # Take exposure with frequency shifting
+   fOn, pOn, fOff, pOff = col.run_fswitch_int(param['nSample'], 
+                              param['nBin'], 
+                              param['gain'], 
+                              param['bandwidth'], 
+                              param['centerFrequency'], 
+                              param['throwFrequency'], 
+                              param['integrationTime'], 
+                              fswitch=param['alternatingFrequency'])
+
+   ut.biast(0, index=0) # turn off bias tee, to power off LNA
+
 
    # print the power spectrum
-   #print(f)
-   #print(p)
+   #print(fOn)
+   #print(pOn)
 
    # save the exposure parameters
    with open(pathOut+"/"+fileName+".yaml", 'w') as file:
       yaml.dump(param, file, sort_keys=False)
 
    # save the power spectrum
-   data = np.zeros((len(f), 2))
-   data[:,0] = f
-   data[:,1] = p
+   data = np.column_stack((fOn, pOn, fOff, pOff))
    np.savetxt(pathOut+"/"+fileName+".txt", data, header=headerOutputFile)
 
    # Save power spectrum plot
-   fig, ax = post.plot_spectrum(f, p, savefig=pathFig+"/"+fileName+".pdf")
+   pDiff = pOn - pOff
+   factor = np.mean(pOn)/np.mean(pOff)
+   pDiffSmart = pOn -  factor * pOff
+   #
+   fig=plt.figure(0)
+   ax=fig.add_subplot(111)
+   ax.semilogy(fOn, pOn, label=r'On')
+   ax.semilogy(fOff, pOff, label=r'Off')
+   ax.semilogy(fOn, np.abs(pDiff), label=r'Diff')
+   ax.semilogy(fOn, np.abs(pDiffSmart), label=r'DiffSmart')
+   ax.legend(loc=1)
+   ax.set_xlabel(r'freq [Hz]')
+   ax.set_ylabel(r'P [V^2/Hz]')
+   fig.savefig(pathFig+"/"+fileName+".pdf", bbox_inches='tight')
    #fig.show()
    fig.clf()
 

@@ -57,7 +57,6 @@ f, p = col.run_spectrum_int(nSample,
 # this time, the integration time is split between the fiducial and shifted freqs,
 # so the integration time on the fiducial freq is half of this number.
 # get f [Hz], p [V^2/Hz]
-#fOn, pOn, fOff, pOff, fFold, pFold = col.run_fswitch_int(nSample, 
 fOn, pOn, fOff, pOff = col.run_fswitch_int(nSample, 
                            nBin, 
                            gain, 
@@ -83,7 +82,6 @@ factor = np.mean(pOn)/np.mean(pOff)
 pDiffSmart = pOn -  factor * pOff
 
 # Show the figure containing the plotted spectrum
-#fig, ax = post.plot_spectrum(fOn, pOndB, savefig='./figures/sandbox/spectrum_fswitch_'+str(integrationTime)+'sec.pdf')
 fig=plt.figure(0)
 ax=fig.add_subplot(111)
 ax.semilogy(f, p, label=r'Fiducial')

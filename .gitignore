@@ -8,3 +8,5 @@
 *.swp
 
 input/planck_maps/
+output/
+figures/
