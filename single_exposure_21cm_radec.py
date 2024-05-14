@@ -43,12 +43,12 @@ nu21cm = 1420405751.768 # [Hz]
 
 # exposure parameters
 param = {}
-param['nSample'] = 8192 # samples per call to the SDR
-param['nBin'] = 2048   # bin resolution power spectrum 
+param['nSample'] = 8192 # samples per call to the SDR, to avoid loading too much in RAM
+param['nBin'] = 512   #1024   #2048   # number of freq bins for  power spectrum 
 param['gain'] = 49.6 # [dB] of RtlSdr gain
-param['bandwidth'] = 3.2e6  # [Hz] sample rate/bandwidth
+param['bandwidth'] = 2.32e6   #3.2e6  # [Hz] sample rate of the SDR, which determines bandwidth of spectrum
 param['centerFrequency'] = nu21cm # [GHz] center frequency
-param['integrationTime'] = 5  #20  # [sec] integration time
+param['integrationTime'] = 30  #5 * 60  # [sec] integration time
 
 # Frequency shifting parameters
 #throwFrequency = nu21cm + 1.e6 # [Hz] alternate frequency. The freq diff has to be less than achieved bandwidth
