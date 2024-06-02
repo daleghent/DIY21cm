@@ -83,6 +83,27 @@ print("Freq switched exposure of "+str(integrationTime)+" sec took "+str(round(t
 print("Time overhead is "+str(round( ((tStop-tStart)/integrationTime -1)*100. ))+"%")
 
 
+############################################################
+# Measure power spectrum above and below 21cm frequency
+
+tStart = time()
+
+# get f [Hz], p [V^2/Hz]
+fHigh, pHigh = col.run_spectrum_int(nSample, 
+                            nBin, 
+                            gain, 
+                            sampleRate, 
+                            centerFrequency + frequencyShift, 
+                            integrationTime)
+
+# get f [Hz], p [V^2/Hz]
+fLow, pLow = col.run_spectrum_int(nSample, 
+                            nBin, 
+                            gain, 
+                            sampleRate, 
+                            centerFrequency - frequencyShift, 
+                            integrationTime)
+
 
 ############################################################
 # The LNA needs to be powered, to amplify around 1.42GHz
@@ -98,15 +119,27 @@ pDiff = pOn - pOff
 factor = np.mean(pOn)/np.mean(pOff)
 pDiffSmart = pOn -  factor * pOff
 
+pBase = (pHigh + pLow) / 2.
+pDiffBase = p - pBase
+factorBase = np.mean(p)/np.mean(pBase)
+pDiffBaseSmart = p - pBase * factorBase
+
 # Show the figure containing the plotted spectrum
 fig=plt.figure(0)
 ax=fig.add_subplot(111)
-ax.semilogy(f, p, label=r'Fiducial')
-ax.semilogy(fOn, pOn, label=r'On')
+ax.semilogy(f, p, 'k', lw=3, label=r'Fiducial')
+ax.semilogy(fOn, pOn, '--', label=r'On')
 ax.semilogy(fOff, pOff, label=r'Off')
-ax.semilogy(fOn, np.abs(pDiff), label=r'Diff')
-ax.semilogy(fOn, np.abs(pDiffSmart), label=r'DiffSmart')
-ax.legend(loc=1)
+ax.semilogy(fLow, pLow, label=r'Low')
+ax.semilogy(fHigh, pHigh, '--', label=r'High')
+ax.semilogy(f, pBase, label=r'Base')
+#ax.semilogy(fOn, np.abs(pDiff), label=r'On-Off')
+ax.semilogy(fOn, np.abs(pDiffSmart), label=r'On-Off_rescaled')
+#ax.semilogy(f, np.abs(pDiffBase), label=r'On - (Low+High)/2')
+ax.semilogy(f, np.abs(pDiffBaseSmart), label=r'On - (Low+High)/2_rescaled')
+#
+ax.legend(loc=4, fontsize='x-small', labelspacing=0.2)
+ax.set_ylim((1.e-11, 2.*np.max(p)))
 ax.set_xlabel(r'freq [Hz]')
 ax.set_ylabel(r'P [V^2/Hz]')
 fig.savefig('./figures/sandbox/spectrum_fswitch_'+str(integrationTime)+'sec.pdf', bbox_inches='tight')

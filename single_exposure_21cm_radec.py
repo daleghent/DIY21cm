@@ -41,12 +41,12 @@ coordinatesPropertyName = "EQUATORIAL_EOD_COORD"
 # 21cm rest-frame frequency
 nu21cm = 1420405751.768 # [Hz]
 
-# exposure parameters
+# Exposure parameters
 param = {}
 param['nSample'] = 8192 # samples per call to the SDR, to avoid loading too much in RAM
 param['nBin'] = 512   #1024   #2048   # number of freq bins for  power spectrum 
 param['gain'] = 49.6 # [dB] of RtlSdr gain
-param['bandwidth'] = 2.32e6   #3.2e6  # [Hz] sample rate of the SDR, which determines bandwidth of spectrum
+param['sampleRate'] = 2.32e6   #3.2e6  # [Hz] sample rate of the SDR, which determines bandwidth of spectrum
 param['centerFrequency'] = nu21cm # [GHz] center frequency
 param['integrationTime'] = 30  #5 * 60  # [sec] integration time
 
@@ -63,7 +63,7 @@ headerOutputFile =  "Exposure settings:\n"
 headerOutputFile += "nSample = "+str(param['nSample'])+" # samples per call to the SDR\n"
 headerOutputFile += "nBin = "+str(param['nBin'])+" # bin resolution power spectrum \n"
 headerOutputFile += "gain = "+str(param['gain'])+" # [dB] of RtlSdr gain\n"
-headerOutputFile += "bandwidth = "+str(param['bandwidth'])+" # [Hz] sample rate/bandwidth\n"
+headerOutputFile += "sample rate = "+str(param['bandwidth'])+" # [Hz] controls bandwidth\n"
 headerOutputFile += "centerFrequency = "+str(param['centerFrequency'])+" # [Hz] center frequency\n"
 headerOutputFile += "integrationTime = "+str(param['integrationTime'])+" # [sec] integration time\n"
 headerOutputFile += "alternateFrequency = "+str(param['throwFrequency'])+" # [Hz] alternate frequency\n"
@@ -214,13 +214,13 @@ try:
    #ut.biast(0, index=0) # turn off bias tee, to power LNA
 
    # Take exposure: measure power spectrum
-   #f, p = col.run_spectrum_int(param['nSample'], param['nBin'], param['gain'], param['bandwidth'], param['centerFrequency'], param['integrationTime'])
+   #f, p = col.run_spectrum_int(param['nSample'], param['nBin'], param['gain'], param['sampleRate'], param['centerFrequency'], param['integrationTime'])
 
    # Take exposure with frequency shifting
    fOn, pOn, fOff, pOff = col.run_fswitch_int(param['nSample'], 
                               param['nBin'], 
                               param['gain'], 
-                              param['bandwidth'], 
+                              param['sampleRate'], 
                               param['centerFrequency'], 
                               param['throwFrequency'], 
                               param['integrationTime'], 
