@@ -35,7 +35,8 @@ from rtlobs import utils as ut
 # Note: the device name may not be called 'Telescope',
 # the ptoperty may not be called 'EQUATORIAL_EOD_COORD'
 #mountDeviceName = "Telescope Simulator"
-mountDeviceName = "AZ-GTi Equatorial WiFi"
+#mountDeviceName = "AZ-GTi Equatorial WiFi"
+mountDeviceName = "AZ-GTi Alt-Az WiFi"
 coordinatesPropertyName = "EQUATORIAL_EOD_COORD"
 
 # 21cm rest-frame frequency

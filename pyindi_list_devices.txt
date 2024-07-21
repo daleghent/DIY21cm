@@ -1,0 +1,941 @@
+In [2]: run test_pyindi_list_devices.py
+2024-06-26 12:30:54,980 creating an instance of IndiClient
+Connecting and waiting 1 sec
+INDI::BaseClient::connectServer: creating new connection...
+2024-06-26 12:30:54,981 Server connected (localhost:7624)
+2024-06-26 12:30:54,981 new device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,982 new property CONNECTION as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,982 new device Canon DSLR EOS 550D
+2024-06-26 12:30:54,982 new property CONNECTION as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,984 new property DRIVER_INFO as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,987 new property POLLING_PERIOD as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,987 new property DEBUG as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,987 new property SIMULATION as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,987 new property CONFIG_PROCESS as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,987 new property ACTIVE_DEVICES as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property DEVICE_PORT as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_EXPOSURE as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_ABORT_EXPOSURE as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_FRAME as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_FRAME_RESET as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_BINNING as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property FITS_HEADER as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_CAPTURE_FORMAT as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,988 new property CCD_TRANSFER_FORMAT as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property CCD_INFO as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property CCD_COMPRESSION as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property CCD1 as INDI_BLOB for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property CCD_FRAME_TYPE as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property CCD_CFA as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property SCOPE_INFO as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,989 new property WCS_CONTROL as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property UPLOAD_MODE as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property UPLOAD_SETTINGS as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property CCD_FAST_TOGGLE as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property CCD_FAST_COUNT as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property CCD_VIDEO_STREAM as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property STREAM_DELAY as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property FPS as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property RECORD_STREAM as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property RECORD_FILE as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property RECORD_OPTIONS as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property CCD_STREAM_FRAME as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property CCD_STREAM_ENCODER as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property CCD_STREAM_RECORDER as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,990 new property LIMITS as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property CCD_EXPOSURE_PRESETS as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property CCD_ISO as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property AUX_VIDEO_STREAM as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property Auto Focus as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property FOCUS_MOTION as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property REL_FOCUS_POSITION as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property CCD_CAPTURE_TARGET as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property CCD_SD_CARD_ACTION as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property syncdatetime as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property uilock as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property popupflash as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property autofocusdrive as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property manualfocusdrive as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,991 new property cancelautofocus as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,992 new property eoszoom as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,992 new property eoszoomposition as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,992 new property DRIVER_INFO as INDI_TEXT for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,993 new property POLLING_PERIOD as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property DEBUG as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property CONFIG_PROCESS as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_POINT_MANDATORY_NUMBERS as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_POINT_OPTIONAL_BINARY_BLOB as INDI_BLOB for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_POINTSET_SIZE as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_POINTSET_CURRENT_ENTRY as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_POINTSET_ACTION as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_POINTSET_COMMIT as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_SUBSYSTEM_MATH_PLUGINS as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_SUBSYSTEM_MATH_PLUGIN_INITIALISE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property ALIGNMENT_SUBSYSTEM_ACTIVE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property CONNECTION_MODE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property DEVICE_ADDRESS as INDI_TEXT for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property CONNECTION_TYPE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,994 new property DEVICE_LAN_SEARCH as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property ACTIVE_DEVICES as INDI_TEXT for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property DOME_POLICY as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property ON_COORD_SET as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property EQUATORIAL_EOD_COORD as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_ABORT_MOTION as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_TRACK_MODE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_TRACK_STATE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_MOTION_NS as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_MOTION_WE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_REVERSE_MOTION as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_SLEW_RATE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TARGET_EOD_COORD as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TIME_UTC as INDI_TEXT for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property GEOGRAPHIC_COORD as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_PARK as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_PARK_POSITION as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,995 new property TELESCOPE_PARK_OPTION as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property USEJOYSTICK as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property SNOOP_JOYSTICK as INDI_TEXT for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property BASIC_MOUNT_INFO as INDI_TEXT for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS_ONE_INFO as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS_ONE_STATE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS_TWO_INFO as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS_TWO_STATE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS1_ENCODER_VALUES as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS2_ENCODER_VALUES as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property TELESCOPE_MOTION_SLEWMODE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property TELESCOPE_MOTION_SOFTPECMODE as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property SOFTPEC as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property GUIDE_RATES as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property TELESCOPE_TIMED_GUIDE_NS as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property TELESCOPE_TIMED_GUIDE_WE as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS1_PID as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,996 new property AXIS2_PID as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:54,997 new property viewfinder as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property eosmoviemode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property opcode as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property datetime as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property reviewtime as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property output as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property movierecordtarget as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property evfmode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property ownername as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property artist as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property copyright as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property customfuncex as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property focusinfo as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property strobofiring as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property flashcharged as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property autopoweroff as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,997 new property depthoffield as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property capturetarget as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property capture as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property remotemode as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property eventmode as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property serialnumber as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property manufacturer as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property cameramodel as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property deviceversion as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property vendorextension as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property model as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property ptpversion as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property batterylevel as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property mirrorlockstatus as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property mirrordownstatus as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property lensname as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property eosserialnumber as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property shuttercounter as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,998 new property availableshots as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property eosmovieswitch as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property imageformatsd as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property whitebalance as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property whitebalanceadjusta as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property whitebalanceadjustb as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property whitebalancexa as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property whitebalancexb as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property colorspace as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property exposurecompensation as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property focusmode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property afmethod as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property storageid as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property autoexposuremode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property drivemode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property picturestyle as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:54,999 new property aperture as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,000 new property meteringmode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property liveviewsize as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property bracketmode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property aeb as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property alomode as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property d402 as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property d407 as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property d406 as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property d303 as INDI_TEXT for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property 5001 as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property MIRROR_LOCK as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property CCD_TEMPERATURE as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property CCD_FORCE_BLOB as INDI_SWITCH for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property CCD_ROTATION as INDI_NUMBER for device Canon DSLR EOS 550D
+2024-06-26 12:30:55,001 new property DEAD_ZONE as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:55,001 new property AXIS_CLOCK as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:55,002 new property AXIS_OFFSET as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:55,002 new property AXIS1TrackRate as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:55,002 new property AXIS2TrackRate as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:55,002 new property AUX_ENCODERS as INDI_SWITCH for device AZ-GTi Alt-Az WiFi
+2024-06-26 12:30:55,205 update property EQUATORIAL_EOD_COORD as INDI_NUMBER for device AZ-GTi Alt-Az WiFi
+List of devices
+   > AZ-GTi Alt-Az WiFi
+   > Canon DSLR EOS 550D
+List of Device Properties
+-- AZ-GTi Alt-Az WiFi
+   > CONNECTION INDI_SWITCH
+       CONNECT(Connect) = On
+       DISCONNECT(Disconnect) = Off
+   > DRIVER_INFO INDI_TEXT
+       DRIVER_NAME(Name) = Skywatcher Alt-Az
+       DRIVER_EXEC(Exec) = indi_skywatcherAltAzMount
+       DRIVER_VERSION(Version) = 1.8
+       DRIVER_INTERFACE(Interface) = 5
+   > POLLING_PERIOD INDI_NUMBER
+       PERIOD_MS(Period (ms)) = 1000.0
+   > DEBUG INDI_SWITCH
+       ENABLE(Enable) = Off
+       DISABLE(Disable) = On
+   > CONFIG_PROCESS INDI_SWITCH
+       CONFIG_LOAD(Load) = Off
+       CONFIG_SAVE(Save) = Off
+       CONFIG_DEFAULT(Default) = Off
+       CONFIG_PURGE(Purge) = Off
+   > ALIGNMENT_POINT_MANDATORY_NUMBERS INDI_NUMBER
+       ALIGNMENT_POINT_ENTRY_OBSERVATION_JULIAN_DATE(Observation Julian date) = 0.0
+       ALIGNMENT_POINT_ENTRY_RA(Right Ascension (hh:mm:ss)) = 0.0
+       ALIGNMENT_POINT_ENTRY_DEC(Declination (dd:mm:ss)) = 0.0
+       ALIGNMENT_POINT_ENTRY_VECTOR_X(Telescope direction vector x) = 0.0
+       ALIGNMENT_POINT_ENTRY_VECTOR_Y(Telescope direction vector y) = 0.0
+       ALIGNMENT_POINT_ENTRY_VECTOR_Z(Telescope direction vector z) = 0.0
+   > ALIGNMENT_POINT_OPTIONAL_BINARY_BLOB INDI_BLOB
+       ALIGNMENT_POINT_ENTRY_PRIVATE(Private binary data) = <blob 0 bytes>
+   > ALIGNMENT_POINTSET_SIZE INDI_NUMBER
+       ALIGNMENT_POINTSET_SIZE(Size) = 0.0
+   > ALIGNMENT_POINTSET_CURRENT_ENTRY INDI_NUMBER
+       ALIGNMENT_POINTSET_CURRENT_ENTRY(Pointer) = 0.0
+   > ALIGNMENT_POINTSET_ACTION INDI_SWITCH
+       APPEND(Add entries at end of set) = On
+       INSERT(Insert entries at current index) = Off
+       EDIT(Overwrite entry at current index) = Off
+       DELETE(Delete entry at current index) = Off
+       CLEAR(Delete all the entries in the set) = Off
+       READ(Read the entry at the current pointer) = Off
+       READ INCREMENT(Increment the pointer before reading the entry) = Off
+       LOAD DATABASE(Load the alignment database from local storage) = Off
+       SAVE DATABASE(Save the alignment database to local storage) = Off
+   > ALIGNMENT_POINTSET_COMMIT INDI_SWITCH
+       ALIGNMENT_POINTSET_COMMIT(OK) = Off
+   > ALIGNMENT_SUBSYSTEM_MATH_PLUGINS INDI_SWITCH
+       INBUILT_MATH_PLUGIN(Inbuilt Math Plugin) = Off
+       Nearest Math Plugin(Nearest Math Plugin) = On
+       SVD Math Plugin(SVD Math Plugin) = Off
+   > ALIGNMENT_SUBSYSTEM_MATH_PLUGIN_INITIALISE INDI_SWITCH
+       ALIGNMENT_SUBSYSTEM_MATH_PLUGIN_INITIALISE(OK) = Off
+   > ALIGNMENT_SUBSYSTEM_ACTIVE INDI_SWITCH
+       ALIGNMENT SUBSYSTEM ACTIVE(Alignment Subsystem Active) = On
+   > CONNECTION_MODE INDI_SWITCH
+       CONNECTION_SERIAL(Serial) = Off
+       CONNECTION_TCP(Network) = On
+   > DEVICE_ADDRESS INDI_TEXT
+       ADDRESS(Address) = 10.250.250.20
+       PORT(Port) = 11880
+   > CONNECTION_TYPE INDI_SWITCH
+       TCP(TCP) = Off
+       UDP(UDP) = On
+   > DEVICE_LAN_SEARCH INDI_SWITCH
+       INDI_ENABLED(Enabled) = Off
+       INDI_DISABLED(Disabled) = On
+   > ACTIVE_DEVICES INDI_TEXT
+       ACTIVE_GPS(GPS) = 
+       ACTIVE_DOME(DOME) = Dome Simulator
+   > DOME_POLICY INDI_SWITCH
+       DOME_IGNORED(Dome ignored) = On
+       DOME_LOCKS(Dome locks) = Off
+   > ON_COORD_SET INDI_SWITCH
+       TRACK(Track) = On
+       SLEW(Slew) = Off
+       SYNC(Sync) = Off
+   > EQUATORIAL_EOD_COORD INDI_NUMBER
+       RA(RA (hh:mm:ss)) = 17.864008596335946
+       DEC(DEC (dd:mm:ss)) = 54.06951956012793
+   > TELESCOPE_ABORT_MOTION INDI_SWITCH
+       ABORT(Abort) = Off
+   > TELESCOPE_TRACK_MODE INDI_SWITCH
+       TRACK_SIDEREAL(Sidereal) = On
+       TRACK_SOLAR(Solar) = Off
+       TRACK_LUNAR(Lunar) = Off
+   > TELESCOPE_TRACK_STATE INDI_SWITCH
+       TRACK_ON(On) = Off
+       TRACK_OFF(Off) = On
+   > TELESCOPE_MOTION_NS INDI_SWITCH
+       MOTION_NORTH(North) = Off
+       MOTION_SOUTH(South) = Off
+   > TELESCOPE_MOTION_WE INDI_SWITCH
+       MOTION_WEST(West) = Off
+       MOTION_EAST(East) = Off
+   > TELESCOPE_REVERSE_MOTION INDI_SWITCH
+       REVERSE_NS(North/South) = Off
+       REVERSE_WE(West/East) = Off
+   > TELESCOPE_SLEW_RATE INDI_SWITCH
+       1x(1x) = Off
+       2x(2x) = Off
+       3x(4x) = Off
+       4x(8x) = Off
+       5x(16x) = On
+       6x(32x) = Off
+       7x(64x) = Off
+       8x(128x) = Off
+       SLEW_MAX(600x) = Off
+   > TARGET_EOD_COORD INDI_NUMBER
+       RA(RA (hh:mm:ss)) = 0.0
+       DEC(DEC (dd:mm:ss)) = 0.0
+   > TIME_UTC INDI_TEXT
+       UTC(UTC Time) = 2024-06-26T19:30:44
+       OFFSET(UTC Offset) = -7
+   > GEOGRAPHIC_COORD INDI_NUMBER
+       LAT(Lat (dd:mm:ss.s)) = 37.4709086
+       LONG(Lon (dd:mm:ss.s)) = 237.7700557
+       ELEV(Elevation (m)) = -20.80000114440918
+   > TELESCOPE_PARK INDI_SWITCH
+       PARK(Park(ed)) = Off
+       UNPARK(UnPark(ed)) = On
+   > TELESCOPE_PARK_POSITION INDI_NUMBER
+       PARK_AZ(AZ Encoder) = 8388608.0
+       PARK_ALT(ALT Encoder) = 8388608.0
+   > TELESCOPE_PARK_OPTION INDI_SWITCH
+       PARK_CURRENT(Current) = Off
+       PARK_DEFAULT(Default) = Off
+       PARK_WRITE_DATA(Write Data) = Off
+       PARK_PURGE_DATA(Purge Data) = Off
+   > USEJOYSTICK INDI_SWITCH
+       ENABLE(Enable) = Off
+       DISABLE(Disable) = On
+   > SNOOP_JOYSTICK INDI_TEXT
+       SNOOP_JOYSTICK_DEVICE(Device) = Joystick
+   > BASIC_MOUNT_INFO INDI_TEXT
+       MOTOR_CONTROL_FIRMWARE_VERSION(Motor control firmware version) = 207013
+       MOUNT_CODE(Mount code) = 165
+       MOUNT_NAME(Mount name) = AZ-GTi
+       IS_DC_MOTOR(Is DC motor) = 0
+   > AXIS_ONE_INFO INDI_NUMBER
+       MICROSTEPS_PER_REVOLUTION(Microsteps per revolution) = 2073600.0
+       STEPPER_CLOCK_FREQUENCY(Stepper clock frequency) = 16000000.0
+       HIGH_SPEED_RATIO(High speed ratio) = 1.0
+       MICROSTEPS_PER_WORM_REVOLUTION(Microsteps per worm revolution) = 14400.0
+   > AXIS_ONE_STATE INDI_SWITCH
+       FULL_STOP(FULL_STOP) = On
+       SLEWING(SLEWING) = Off
+       SLEWING_TO(SLEWING_TO) = Off
+       SLEWING_FORWARD(SLEWING_FORWARD) = On
+       HIGH_SPEED(HIGH_SPEED) = Off
+       NOT_INITIALISED(NOT_INITIALISED) = Off
+   > AXIS_TWO_INFO INDI_NUMBER
+       MICROSTEPS_PER_REVOLUTION(Microsteps per revolution) = 2073600.0
+       STEPPER_CLOCK_FREQUENCY(Step timer frequency) = 16000000.0
+       HIGH_SPEED_RATIO(High speed ratio) = 1.0
+       MICROSTEPS_PER_WORM_REVOLUTION(Microsteps per worm revolution) = 14400.0
+   > AXIS_TWO_STATE INDI_SWITCH
+       FULL_STOP(FULL_STOP) = On
+       SLEWING(SLEWING) = Off
+       SLEWING_TO(SLEWING_TO) = Off
+       SLEWING_FORWARD(SLEWING_FORWARD) = On
+       HIGH_SPEED(HIGH_SPEED) = Off
+       NOT_INITIALISED(NOT_INITIALISED) = Off
+   > AXIS1_ENCODER_VALUES INDI_NUMBER
+       RAW_MICROSTEPS(Raw Microsteps) = 8381687.0
+       MICROSTEPS_PER_ARCSEC(Microsteps/arcsecond) = 1.6
+       OFFSET_FROM_INITIAL(Offset from initial) = -6921.0
+       DEGREES_FROM_INITIAL(Degrees from initial) = -1.2015625
+   > AXIS2_ENCODER_VALUES INDI_NUMBER
+       RAW_MICROSTEPS(Raw Microsteps) = 8397479.0
+       MICROSTEPS_PER_ARCSEC(Microsteps/arcsecond) = 1.6
+       OFFSET_FROM_INITIAL(Offset from initial) = 8871.0
+       DEGREES_FROM_INITIAL(Degrees from initial) = 1.5401041666666668
+   > TELESCOPE_MOTION_SLEWMODE INDI_SWITCH
+       SLEW_SILENT(Silent) = Off
+       SLEW_NORMAL(Normal) = On
+   > TELESCOPE_MOTION_SOFTPECMODE INDI_SWITCH
+       SOFTPEC_ENABLED(Enable for tracking) = Off
+       SOFTPEC_DISABLED(Disabled) = On
+   > SOFTPEC INDI_NUMBER
+       SOFTPEC_VALUE(degree/minute (Alt)) = 0.009
+   > GUIDE_RATES INDI_NUMBER
+       GUIDERA_RATE(arcsec/seconds (RA)) = 120.0
+       GUIDEDEC_RATE(arcsec/seconds (Dec)) = 120.0
+   > TELESCOPE_TIMED_GUIDE_NS INDI_NUMBER
+       TIMED_GUIDE_N(North (ms)) = 0.0
+       TIMED_GUIDE_S(South (ms)) = 0.0
+   > TELESCOPE_TIMED_GUIDE_WE INDI_NUMBER
+       TIMED_GUIDE_W(West (ms)) = 0.0
+       TIMED_GUIDE_E(East (ms)) = 0.0
+   > AXIS1_PID INDI_NUMBER
+       Propotional(Propotional) = 1.1
+       Derivative(Derivative) = 0.01
+       Integral(Integral) = 0.65
+   > AXIS2_PID INDI_NUMBER
+       Propotional(Propotional) = 0.75
+       Derivative(Derivative) = 0.01
+       Integral(Integral) = 0.13
+   > DEAD_ZONE INDI_NUMBER
+       AXIS1(AZ (steps)) = 10.0
+       AXIS2(AL (steps)) = 10.0
+   > AXIS_CLOCK INDI_NUMBER
+       AXIS1(AZ %) = 100.0
+       AXIS2(AL %) = 100.0
+   > AXIS_OFFSET INDI_NUMBER
+       RAOffset(RA (deg)) = 0.0
+       DEOffset(DE (deg)) = 0.0
+       AZEncoder(AZ (steps)) = 0.0
+       ALEncoder(AL (steps)) = -100.0
+       JulianOffset(JD (s)) = 0.0
+   > AXIS1TrackRate INDI_NUMBER
+       TrackDirection(West/East) = 0.0
+       TrackClockRate(Freq/Step (Hz/s)) = 0.0
+   > AXIS2TrackRate INDI_NUMBER
+       TrackDirection(North/South) = 0.0
+       TrackClockRate(Freq/Stel (Hz/s)) = 0.0
+   > AUX_ENCODERS INDI_SWITCH
+       INDI_ENABLED(Enabled) = On
+       INDI_DISABLED(Disabled) = Off
+-- Canon DSLR EOS 550D
+   > CONNECTION INDI_SWITCH
+       CONNECT(Connect) = On
+       DISCONNECT(Disconnect) = Off
+   > DRIVER_INFO INDI_TEXT
+       DRIVER_NAME(Name) = GPhoto CCD
+       DRIVER_EXEC(Exec) = indi_canon_ccd
+       DRIVER_VERSION(Version) = 3.2
+       DRIVER_INTERFACE(Interface) = 10
+   > POLLING_PERIOD INDI_NUMBER
+       PERIOD_MS(Period (ms)) = 1000.0
+   > DEBUG INDI_SWITCH
+       ENABLE(Enable) = Off
+       DISABLE(Disable) = On
+   > SIMULATION INDI_SWITCH
+       ENABLE(Enable) = Off
+       DISABLE(Disable) = On
+   > CONFIG_PROCESS INDI_SWITCH
+       CONFIG_LOAD(Load) = Off
+       CONFIG_SAVE(Save) = Off
+       CONFIG_DEFAULT(Default) = Off
+       CONFIG_PURGE(Purge) = Off
+   > ACTIVE_DEVICES INDI_TEXT
+       ACTIVE_TELESCOPE(Telescope) = AZ-GTi Alt-Az WiFi
+       ACTIVE_ROTATOR(Rotator) = 
+       ACTIVE_FOCUSER(Focuser) = Canon DSLR EOS 550D
+       ACTIVE_FILTER(Filter) = 
+       ACTIVE_SKYQUALITY(Sky Quality) = SQM
+   > DEVICE_PORT INDI_TEXT
+       PORT(Port) = 
+   > CCD_EXPOSURE INDI_NUMBER
+       CCD_EXPOSURE_VALUE(Duration (s)) = 1.0
+   > CCD_ABORT_EXPOSURE INDI_SWITCH
+       ABORT(Abort) = Off
+   > CCD_FRAME INDI_NUMBER
+       X(Left ) = 0.0
+       Y(Top) = 0.0
+       WIDTH(Width) = 5184.0
+       HEIGHT(Height) = 3456.0
+   > CCD_FRAME_RESET INDI_SWITCH
+       RESET(Reset) = Off
+   > CCD_BINNING INDI_NUMBER
+       HOR_BIN(X) = 1.0
+       VER_BIN(Y) = 1.0
+   > FITS_HEADER INDI_TEXT
+       KEYWORD_NAME(Name) = 
+       KEYWORD_VALUE(Value) = 
+       KEYWORD_COMMENT(Comment) = 
+   > CCD_CAPTURE_FORMAT INDI_SWITCH
+       FORMAT_1(Large Fine JPEG) = Off
+       FORMAT_2(Large Normal JPEG) = Off
+       FORMAT_3(Medium Fine JPEG) = Off
+       FORMAT_4(Medium Normal JPEG) = Off
+       FORMAT_5(Small Fine JPEG) = Off
+       FORMAT_6(Small Normal JPEG) = Off
+       FORMAT_7(RAW) = On
+   > CCD_TRANSFER_FORMAT INDI_SWITCH
+       FORMAT_FITS(FITS) = On
+       FORMAT_NATIVE(Native) = Off
+       FORMAT_XISF(XISF) = Off
+   > CCD_INFO INDI_NUMBER
+       CCD_MAX_X(Max. Width) = 5184.0
+       CCD_MAX_Y(Max. Height) = 3456.0
+       CCD_PIXEL_SIZE(Pixel size (um)) = 4.300000190734863
+       CCD_PIXEL_SIZE_X(Pixel size X) = 4.300000190734863
+       CCD_PIXEL_SIZE_Y(Pixel size Y) = 4.300000190734863
+       CCD_BITSPERPIXEL(Bits per pixel) = 8.0
+   > CCD_COMPRESSION INDI_SWITCH
+       INDI_ENABLED(Enabled) = Off
+       INDI_DISABLED(Disabled) = On
+   > CCD1 INDI_BLOB
+       CCD1(Image) = <blob 0 bytes>
+   > CCD_FRAME_TYPE INDI_SWITCH
+       FRAME_LIGHT(Light) = On
+       FRAME_BIAS(Bias) = Off
+       FRAME_DARK(Dark) = Off
+       FRAME_FLAT(Flat) = Off
+   > CCD_CFA INDI_TEXT
+       CFA_OFFSET_X(X Offset) = 0
+       CFA_OFFSET_Y(Y Offset) = 0
+       CFA_TYPE(Filter) = RGGB
+   > SCOPE_INFO INDI_NUMBER
+       FOCAL_LENGTH(Focal Length (mm)) = 300.0
+       APERTURE(Aperture (mm)) = 50.0
+   > WCS_CONTROL INDI_SWITCH
+       WCS_ENABLE(Enable) = On
+       WCS_DISABLE(Disable) = Off
+   > UPLOAD_MODE INDI_SWITCH
+       UPLOAD_CLIENT(Client) = On
+       UPLOAD_LOCAL(Local) = Off
+       UPLOAD_BOTH(Both) = Off
+   > UPLOAD_SETTINGS INDI_TEXT
+       UPLOAD_DIR(Dir) = /home/stellarmate
+       UPLOAD_PREFIX(Prefix) = IMAGE_XXX
+   > CCD_FAST_TOGGLE INDI_SWITCH
+       INDI_ENABLED(Enabled) = Off
+       INDI_DISABLED(Disabled) = On
+   > CCD_FAST_COUNT INDI_NUMBER
+       FRAMES(Frames) = 1.0
+   > CCD_VIDEO_STREAM INDI_SWITCH
+       STREAM_ON(Stream On) = Off
+       STREAM_OFF(Stream Off) = On
+   > STREAM_DELAY INDI_NUMBER
+       STREAM_DELAY_TIME(Delay (s)) = 0.0
+   > FPS INDI_NUMBER
+       EST_FPS(Instant.) = 30.0
+       AVG_FPS(Average (1 sec.)) = 30.0
+   > RECORD_STREAM INDI_SWITCH
+       RECORD_ON(Record On) = Off
+       RECORD_DURATION_ON(Record (Duration)) = Off
+       RECORD_FRAME_ON(Record (Frames)) = Off
+       RECORD_OFF(Record Off) = On
+   > RECORD_FILE INDI_TEXT
+       RECORD_FILE_DIR(Dir.) = /home/stellarmate/indi__D_
+       RECORD_FILE_NAME(Name) = indi_record__T_
+   > RECORD_OPTIONS INDI_NUMBER
+       RECORD_DURATION(Duration (sec)) = 1.0
+       RECORD_FRAME_TOTAL(Frames) = 30.0
+   > CCD_STREAM_FRAME INDI_NUMBER
+       X(Left) = 0.0
+       Y(Top) = 0.0
+       WIDTH(Width) = 5184.0
+       HEIGHT(Height) = 3456.0
+   > CCD_STREAM_ENCODER INDI_SWITCH
+       RAW(RAW) = On
+       MJPEG(MJPEG) = Off
+   > CCD_STREAM_RECORDER INDI_SWITCH
+       SER(SER) = On
+   > LIMITS INDI_NUMBER
+       LIMITS_BUFFER_MAX(Maximum Buffer Size (MB)) = 512.0
+       LIMITS_PREVIEW_FPS(Maximum Preview FPS) = 10.0
+   > CCD_EXPOSURE_PRESETS INDI_SWITCH
+       EXPOSURE_PRESET0(bulb) = On
+       EXPOSURE_PRESET1(30) = Off
+       EXPOSURE_PRESET2(25) = Off
+       EXPOSURE_PRESET3(20) = Off
+       EXPOSURE_PRESET4(15) = Off
+       EXPOSURE_PRESET5(13) = Off
+       EXPOSURE_PRESET6(10.3) = Off
+       EXPOSURE_PRESET7(8) = Off
+       EXPOSURE_PRESET8(6.3) = Off
+       EXPOSURE_PRESET9(5) = Off
+       EXPOSURE_PRESET10(4) = Off
+       EXPOSURE_PRESET11(3.2) = Off
+       EXPOSURE_PRESET12(2.5) = Off
+       EXPOSURE_PRESET13(2) = Off
+       EXPOSURE_PRESET14(1.6) = Off
+       EXPOSURE_PRESET15(1.3) = Off
+       EXPOSURE_PRESET16(1) = Off
+       EXPOSURE_PRESET17(0.8) = Off
+       EXPOSURE_PRESET18(0.6) = Off
+       EXPOSURE_PRESET19(0.5) = Off
+       EXPOSURE_PRESET20(0.4) = Off
+       EXPOSURE_PRESET21(0.3) = Off
+       EXPOSURE_PRESET22(1/4) = Off
+       EXPOSURE_PRESET23(1/5) = Off
+       EXPOSURE_PRESET24(1/6) = Off
+       EXPOSURE_PRESET25(1/8) = Off
+       EXPOSURE_PRESET26(1/10) = Off
+       EXPOSURE_PRESET27(1/13) = Off
+       EXPOSURE_PRESET28(1/15) = Off
+       EXPOSURE_PRESET29(1/20) = Off
+       EXPOSURE_PRESET30(1/25) = Off
+       EXPOSURE_PRESET31(1/30) = Off
+       EXPOSURE_PRESET32(1/40) = Off
+       EXPOSURE_PRESET33(1/50) = Off
+       EXPOSURE_PRESET34(1/60) = Off
+       EXPOSURE_PRESET35(1/80) = Off
+       EXPOSURE_PRESET36(1/100) = Off
+       EXPOSURE_PRESET37(1/125) = Off
+       EXPOSURE_PRESET38(1/160) = Off
+       EXPOSURE_PRESET39(1/200) = Off
+       EXPOSURE_PRESET40(1/250) = Off
+       EXPOSURE_PRESET41(1/320) = Off
+       EXPOSURE_PRESET42(1/400) = Off
+       EXPOSURE_PRESET43(1/500) = Off
+       EXPOSURE_PRESET44(1/640) = Off
+       EXPOSURE_PRESET45(1/800) = Off
+       EXPOSURE_PRESET46(1/1000) = Off
+       EXPOSURE_PRESET47(1/1250) = Off
+       EXPOSURE_PRESET48(1/1600) = Off
+       EXPOSURE_PRESET49(1/2000) = Off
+       EXPOSURE_PRESET50(1/2500) = Off
+       EXPOSURE_PRESET51(1/3200) = Off
+       EXPOSURE_PRESET52(1/4000) = Off
+   > CCD_ISO INDI_SWITCH
+       ISO0(Auto) = Off
+       ISO1(100) = Off
+       ISO2(200) = Off
+       ISO3(400) = Off
+       ISO4(800) = On
+       ISO5(1600) = Off
+       ISO6(3200) = Off
+       ISO7(6400) = Off
+   > AUX_VIDEO_STREAM INDI_SWITCH
+       Enable(Enable) = Off
+       Disable(Disable) = On
+   > Auto Focus INDI_SWITCH
+       Set(Set) = Off
+   > FOCUS_MOTION INDI_SWITCH
+       FOCUS_INWARD(Focus In) = On
+       FOCUS_OUTWARD(Focus Out) = Off
+   > REL_FOCUS_POSITION INDI_NUMBER
+       FOCUS_RELATIVE_POSITION(Steps) = 0.0
+   > CCD_CAPTURE_TARGET INDI_SWITCH
+       RAM(RAM) = On
+       SD Card(SD Card) = Off
+   > CCD_SD_CARD_ACTION INDI_SWITCH
+       Save(Save) = On
+       Delete(Delete) = Off
+       Ignore(Ignore) = Off
+   > syncdatetime INDI_SWITCH
+       syncdatetime0(On) = Off
+       syncdatetime1(Off) = On
+   > uilock INDI_SWITCH
+       uilock0(On) = On
+       uilock1(Off) = Off
+   > popupflash INDI_SWITCH
+       popupflash0(On) = On
+       popupflash1(Off) = Off
+   > autofocusdrive INDI_SWITCH
+       autofocusdrive0(On) = Off
+       autofocusdrive1(Off) = On
+   > manualfocusdrive INDI_SWITCH
+       manualfocusdrive0(Near 1) = Off
+       manualfocusdrive1(Near 2) = Off
+       manualfocusdrive2(Near 3) = Off
+       manualfocusdrive3(None) = On
+       manualfocusdrive4(Far 1) = Off
+       manualfocusdrive5(Far 2) = Off
+       manualfocusdrive6(Far 3) = Off
+   > cancelautofocus INDI_SWITCH
+       cancelautofocus0(On) = Off
+       cancelautofocus1(Off) = On
+   > eoszoom INDI_TEXT
+       eoszoom(eoszoom) = 0
+   > eoszoomposition INDI_TEXT
+       eoszoomposition(eoszoomposition) = 0,0
+   > viewfinder INDI_SWITCH
+       viewfinder0(On) = Off
+       viewfinder1(Off) = On
+   > eosmoviemode INDI_SWITCH
+       eosmoviemode0(On) = On
+       eosmoviemode1(Off) = Off
+   > opcode INDI_TEXT
+       opcode(opcode) = 0x1001,0xparam1,0xparam2
+   > datetime INDI_TEXT
+       datetime(datetime) = 2024-06-27T02:43:55Z
+   > reviewtime INDI_SWITCH
+       reviewtime0(None) = Off
+       reviewtime1(2 seconds) = On
+       reviewtime2(4 seconds) = Off
+       reviewtime3(8 seconds) = Off
+       reviewtime4(Hold) = Off
+   > output INDI_SWITCH
+       output0(TFT) = Off
+       output1(PC) = Off
+       output2(MOBILE) = Off
+       output3(Off) = On
+   > movierecordtarget INDI_SWITCH
+       movierecordtarget0(None) = On
+   > evfmode INDI_SWITCH
+       evfmode0(0) = Off
+       evfmode1(1) = On
+   > ownername INDI_TEXT
+       ownername(ownername) = 
+   > artist INDI_TEXT
+       artist(artist) = 
+   > copyright INDI_TEXT
+       copyright(copyright) = 
+   > customfuncex INDI_TEXT
+       customfuncex(customfuncex) = c8,4,1,2c,3,101,1,0,103,1,0,10f,1,0,2,2c,3,201,1,0,202,1,0,203,1,0,3,20,2,50e,1,0,60f,1,0,4,38,4,701,1,0,704,1,0,811,1,0,80f,1,0,
+   > focusinfo INDI_TEXT
+       focusinfo(focusinfo) = eosversion=2,size=4752x3168,size2=5184x3456,points={{-1363,0,172,129},{-819,387,172,129},{-819,-387,172,129},{0,729,117,181},{0,0,221,222},{0,-729,117,181},{819,387,172,129},{819,-387,172,129},{1363,0,172,129}},select={},unknown={10000000ffff}
+   > strobofiring INDI_SWITCH
+       strobofiring0(0) = On
+       strobofiring1(1) = Off
+       strobofiring2(2) = Off
+   > flashcharged INDI_TEXT
+       flashcharged(flashcharged) = 0
+   > autopoweroff INDI_TEXT
+       autopoweroff(autopoweroff) = 0
+   > depthoffield INDI_TEXT
+       depthoffield(depthoffield) = 0
+   > capturetarget INDI_SWITCH
+       capturetarget0(Internal RAM) = On
+       capturetarget1(Memory card) = Off
+   > capture INDI_SWITCH
+       capture0(On) = On
+       capture1(Off) = Off
+   > remotemode INDI_TEXT
+       remotemode(remotemode) = 1
+   > eventmode INDI_TEXT
+       eventmode(eventmode) = 0
+   > serialnumber INDI_TEXT
+       serialnumber(serialnumber) = e0567d23a4a6409ea4fd710e2f07e89d
+   > manufacturer INDI_TEXT
+       manufacturer(manufacturer) = Canon Inc.
+   > cameramodel INDI_TEXT
+       cameramodel(cameramodel) = Canon EOS REBEL T2i
+   > deviceversion INDI_TEXT
+       deviceversion(deviceversion) = 3-1.0.9
+   > vendorextension INDI_TEXT
+       vendorextension(vendorextension) = 
+   > model INDI_TEXT
+       model(model) = 2147484272
+   > ptpversion INDI_TEXT
+       ptpversion(ptpversion) = 256
+   > batterylevel INDI_TEXT
+       batterylevel(batterylevel) = 100%
+   > mirrorlockstatus INDI_TEXT
+       mirrorlockstatus(mirrorlockstatus) = 0
+   > mirrordownstatus INDI_TEXT
+       mirrordownstatus(mirrordownstatus) = 0
+   > lensname INDI_TEXT
+       lensname(lensname) = EF50mm f/1.8 II
+   > eosserialnumber INDI_TEXT
+       eosserialnumber(eosserialnumber) = 1222502610
+   > shuttercounter INDI_TEXT
+       shuttercounter(shuttercounter) = 47479
+   > availableshots INDI_TEXT
+       availableshots(availableshots) = 39519
+   > eosmovieswitch INDI_TEXT
+       eosmovieswitch(eosmovieswitch) = 0
+   > imageformatsd INDI_SWITCH
+       imageformatsd0(Large Fine JPEG) = Off
+       imageformatsd1(Large Normal JPEG) = Off
+       imageformatsd2(Medium Fine JPEG) = Off
+       imageformatsd3(Medium Normal JPEG) = Off
+       imageformatsd4(Small Fine JPEG) = Off
+       imageformatsd5(Small Normal JPEG) = Off
+       imageformatsd6(RAW + Large Fine JPEG) = Off
+       imageformatsd7(RAW) = On
+   > whitebalance INDI_SWITCH
+       whitebalance0(Auto) = Off
+       whitebalance1(Daylight) = On
+       whitebalance2(Shadow) = Off
+       whitebalance3(Cloudy) = Off
+       whitebalance4(Tungsten) = Off
+       whitebalance5(Fluorescent) = Off
+       whitebalance6(Flash) = Off
+       whitebalance7(Manual) = Off
+   > whitebalanceadjusta INDI_SWITCH
+       whitebalanceadjusta0(-9) = Off
+       whitebalanceadjusta1(-8) = Off
+       whitebalanceadjusta2(-7) = Off
+       whitebalanceadjusta3(-6) = Off
+       whitebalanceadjusta4(-5) = Off
+       whitebalanceadjusta5(-4) = Off
+       whitebalanceadjusta6(-3) = Off
+       whitebalanceadjusta7(-2) = Off
+       whitebalanceadjusta8(-1) = Off
+       whitebalanceadjusta9(0) = On
+       whitebalanceadjusta10(1) = Off
+       whitebalanceadjusta11(2) = Off
+       whitebalanceadjusta12(3) = Off
+       whitebalanceadjusta13(4) = Off
+       whitebalanceadjusta14(5) = Off
+       whitebalanceadjusta15(6) = Off
+       whitebalanceadjusta16(7) = Off
+       whitebalanceadjusta17(8) = Off
+       whitebalanceadjusta18(9) = Off
+   > whitebalanceadjustb INDI_SWITCH
+       whitebalanceadjustb0(-9) = Off
+       whitebalanceadjustb1(-8) = Off
+       whitebalanceadjustb2(-7) = Off
+       whitebalanceadjustb3(-6) = Off
+       whitebalanceadjustb4(-5) = Off
+       whitebalanceadjustb5(-4) = Off
+       whitebalanceadjustb6(-3) = Off
+       whitebalanceadjustb7(-2) = Off
+       whitebalanceadjustb8(-1) = Off
+       whitebalanceadjustb9(0) = On
+       whitebalanceadjustb10(1) = Off
+       whitebalanceadjustb11(2) = Off
+       whitebalanceadjustb12(3) = Off
+       whitebalanceadjustb13(4) = Off
+       whitebalanceadjustb14(5) = Off
+       whitebalanceadjustb15(6) = Off
+       whitebalanceadjustb16(7) = Off
+       whitebalanceadjustb17(8) = Off
+       whitebalanceadjustb18(9) = Off
+   > whitebalancexa INDI_SWITCH
+       whitebalancexa0(0) = On
+       whitebalancexa1(1) = Off
+       whitebalancexa2(2) = Off
+       whitebalancexa3(3) = Off
+   > whitebalancexb INDI_SWITCH
+       whitebalancexb0(0) = On
+       whitebalancexb1(1) = Off
+       whitebalancexb2(2) = Off
+       whitebalancexb3(3) = Off
+   > colorspace INDI_SWITCH
+       colorspace0(sRGB) = On
+       colorspace1(AdobeRGB) = Off
+   > exposurecompensation INDI_SWITCH
+       exposurecompensation0(0) = On
+   > focusmode INDI_SWITCH
+       focusmode0(One Shot) = Off
+       focusmode1(AI Focus) = Off
+       focusmode2(AI Servo) = On
+   > afmethod INDI_SWITCH
+       afmethod0(Live) = Off
+       afmethod1(LiveFace) = Off
+       afmethod2(Quick) = On
+   > storageid INDI_TEXT
+       storageid(storageid) = 00020001
+   > autoexposuremode INDI_SWITCH
+       autoexposuremode0(P) = Off
+       autoexposuremode1(TV) = Off
+       autoexposuremode2(AV) = Off
+       autoexposuremode3(Manual) = On
+       autoexposuremode4(Bulb) = Off
+       autoexposuremode5(A_DEP) = Off
+       autoexposuremode6(DEP) = Off
+       autoexposuremode7(Custom) = Off
+       autoexposuremode8(Lock) = Off
+       autoexposuremode9(Green) = Off
+       autoexposuremode10(Night Portrait) = Off
+       autoexposuremode11(Sports) = Off
+       autoexposuremode12(Portrait) = Off
+       autoexposuremode13(Landscape) = Off
+       autoexposuremode14(Closeup) = Off
+       autoexposuremode15(Flash Off) = Off
+       autoexposuremode16(C2) = Off
+       autoexposuremode17(C3) = Off
+       autoexposuremode18(Creative Auto) = Off
+       autoexposuremode19(Movie) = Off
+       autoexposuremode20(Auto) = Off
+       autoexposuremode21(Handheld Night Scene) = Off
+       autoexposuremode22(HDR Backlight Control) = Off
+       autoexposuremode23(SCN) = Off
+       autoexposuremode24(Food) = Off
+       autoexposuremode25(Grainy B/W) = Off
+       autoexposuremode26(Soft focus) = Off
+       autoexposuremode27(Toy camera effect) = Off
+       autoexposuremode28(Fish-eye effect) = Off
+       autoexposuremode29(Water painting effect) = Off
+       autoexposuremode30(Miniature effect) = Off
+       autoexposuremode31(HDR art standard) = Off
+       autoexposuremode32(HDR art vivid) = Off
+       autoexposuremode33(HDR art bold) = Off
+       autoexposuremode34(HDR art embossed) = Off
+       autoexposuremode35(Panning) = Off
+       autoexposuremode36(HDR) = Off
+       autoexposuremode37(Self Portrait) = Off
+       autoexposuremode38(Hybrid Auto) = Off
+       autoexposuremode39(Smooth skin) = Off
+       autoexposuremode40(Fv) = Off
+   > drivemode INDI_SWITCH
+       drivemode0(Single) = On
+       drivemode1(Continuous) = Off
+       drivemode2(Timer 10 sec) = Off
+       drivemode3(Timer 2 sec) = Off
+       drivemode4(Continuous timer) = Off
+   > picturestyle INDI_SWITCH
+       picturestyle0(Standard) = On
+       picturestyle1(Portrait) = Off
+       picturestyle2(Landscape) = Off
+       picturestyle3(Neutral) = Off
+       picturestyle4(Faithful) = Off
+       picturestyle5(Monochrome) = Off
+       picturestyle6(User defined 1) = Off
+       picturestyle7(User defined 2) = Off
+       picturestyle8(User defined 3) = Off
+   > aperture INDI_SWITCH
+       aperture0(1.8) = Off
+       aperture1(2) = Off
+       aperture2(2.2) = Off
+       aperture3(2.5) = Off
+       aperture4(2.8) = Off
+       aperture5(3.2) = Off
+       aperture6(3.5) = Off
+       aperture7(4) = On
+       aperture8(4.5) = Off
+       aperture9(5) = Off
+       aperture10(5.6) = Off
+       aperture11(6.3) = Off
+       aperture12(7.1) = Off
+       aperture13(8) = Off
+       aperture14(9) = Off
+       aperture15(10) = Off
+       aperture16(11) = Off
+       aperture17(13) = Off
+       aperture18(14) = Off
+       aperture19(16) = Off
+       aperture20(18) = Off
+       aperture21(20) = Off
+       aperture22(22) = Off
+   > meteringmode INDI_SWITCH
+       meteringmode0(Evaluative) = Off
+       meteringmode1(Partial) = Off
+       meteringmode2(Spot) = On
+       meteringmode3(Center-weighted average) = Off
+   > liveviewsize INDI_SWITCH
+       liveviewsize0(Large) = On
+       liveviewsize1(Medium) = Off
+   > bracketmode INDI_SWITCH
+       bracketmode0(Unknown value 0000) = On
+   > aeb INDI_SWITCH
+       aeb0(off) = On
+       aeb1(+/- 1/3) = Off
+       aeb2(+/- 2/3) = Off
+       aeb3(+/- 1) = Off
+       aeb4(+/- 1 1/3) = Off
+       aeb5(+/- 1 2/3) = Off
+       aeb6(+/- 2) = Off
+   > alomode INDI_SWITCH
+       alomode0(Standard (disabled in manual exposure)) = On
+       alomode1(x1) = Off
+       alomode2(x2) = Off
+       alomode3(x3) = Off
+   > d402 INDI_TEXT
+       d402(d402) = Canon EOS REBEL T2i
+   > d407 INDI_TEXT
+       d407(d407) = 1
+   > d406 INDI_TEXT
+       d406(d406) = Unknown Initiator
+   > d303 INDI_TEXT
+       d303(d303) = 1
+   > 5001 INDI_SWITCH
+       50010(100) = On
+       50011(0) = Off
+       50012(75) = Off
+       50013(0) = Off
+       50014(50) = Off
+   > MIRROR_LOCK INDI_NUMBER
+       MIRROR_LOCK_SECONDS(Seconds) = 0.0
+   > CCD_TEMPERATURE INDI_NUMBER
+       CCD_TEMPERATURE_VALUE(Temperature (C)) = 0.0
+   > CCD_FORCE_BLOB INDI_SWITCH
+       On(On) = On
+       Off(Off) = Off
+   > CCD_ROTATION INDI_NUMBER
+       CCD_ROTATION_VALUE(Rotation) = 0.0
+Disconnecting
+2024-06-26 12:30:56,006 Server disconnected (exit code = 0,localhost:7624)
