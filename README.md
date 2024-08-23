@@ -3,6 +3,9 @@ and observe the neutral hydrogen signal from the Milky Way!
 Not only can you detect the Milky Way signal, but you can identify the various spiral arms,
 and measure the rotation profile via the Doppler effect.
 
+The setup is: 
+WIFI antenna --> LNA --> RTL-SDR --> mini PC running Kubuntu.
+
 ## Installing the dependencies on Kubuntu:
 
 ### rtl-sdr package
