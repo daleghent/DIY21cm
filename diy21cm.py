@@ -1,19 +1,14 @@
-#!/home/stellarmate/miniforge3/bin/python3
+#!/home/stellarmate/anaconda3/bin/python3
 # Before running this python script,
 # start an INDI server, either in ekos gui, or with the command line:
 # indiserver indi_simulator_telescope
 
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as np, matplotlib.pyplot as plt
 
 # for logging
-import time
-import logging
-
-# to save output data and parameters
+import time, logging, os
 from datetime import datetime
-import yaml
-import os
+import json_io as json
 
 # To communicate with mount and get ra, dec
 import PyIndi
@@ -23,13 +18,13 @@ import PyIndi
 # add path
 import sys
 sys.path.append('/home/stellarmate/rtlobs')
-from rtlobs import collect as col
-from rtlobs import post_process as post
-from rtlobs import utils as ut
+from rtlobs import collect as col, post_process as post, utils as ut
 
 
 #####################################################
 # Constants
+
+c = 299792458  # speed of light [m/s]
 
 # 21cm line rest-frame frequency
 nu21cm = 1420405751.768 # [Hz]
@@ -71,17 +66,46 @@ def getDefaultParams():
    return param
 
 def setDate(param):
-   '''get today's date as yyyymmdd
+   '''Set current date as yyyymmdd
    '''
    param['dateCapture'] = datetime.today().strftime("%Y%m%d")
 
+
 def setTime(param):
-   '''Get current time as hh:mm:ss
+   '''Set current time as hh:mm:ss
    '''
    param['timeCapture'] = datetime.now().strftime("%Hh%Mm%Ss")
 
+
+def setTimeSameDate(param, paramStart):
+   '''Set same date as start date,
+   and set current time as hh:mm:ss,
+   where hh adds 24 for every day that elapsed
+   since the start date.
+   '''
+   # start by setting the date to the start date
+   param['dateCapture'] = paramStart['dateCapture']
+   # set the time to the current time
+   setTime(param)
+
+   # Add 24 to the hours for each day elapsed
+   # compute number of days elapsed since start
+   nDays = (datetime.today() - datetime.strptime(paramStart['dateCapture'], "%Y%m%d")).days
+   # Find the position of 'h' in time string
+   h_index = param['timeCapture'].index('h')
+   # extract the hours, minutes and seconds
+   hours = int(param['timeCapture'][:h_index])
+   minutes = int(param['timeCapture'][h_index + 1:m_index])
+   seconds = int(param['timeCapture'][m_index + 1:s_index])
+   # Add 24 hours to the extracted hours
+   hours += 24 * nDays
+   # Format the new time string
+   param['timeCapture'] = f'{hours}h{minutes}m{seconds}s'
+
+
+
 def setExpType(param, expType):
-   ''' expType='fOn', 'fOff', 'fSwitch'
+   ''' expType='on', 'foff', 'fswitch', 'hot', 'cold'
    '''
    param['expType'] = expType
 
@@ -249,11 +273,14 @@ def setMountInfo(param):
                if genericProperty.getName()==param['latLonPropertyName']:
                   for widget in PyIndi.PropertyNumber(genericProperty):
                      # read latitude
-                     elif widget.getName()=="LAT":
+                     if widget.getName()=="LAT":
                         param['lat'] = widget.getValue() # [deg]
                      # read longitude
-                     if widget.getName()=="LONG":
+                     elif widget.getName()=="LONG":
                         param['lon'] = widget.getValue() # [deg]
+
+   except:
+      print("Could not read ra, dec from mount")
 
    print("Mount info from INDI server:")
    print("RA = "+str(param['ra'])+" deg")
@@ -285,47 +312,27 @@ def setOutputFigDir(param):
 
 
 def setFileName(param):
-   '''Set base name for output/pdf/yaml files.
+   '''Set base name for output/pdf files.
    '''
    # File name
-   fileName = "exposure_ra"+str(param['ra'])+"_dec"+str(param['dec'])
+   fileName = param['dateCapture']+"_"+param['timeCapture']
+   fileName += "_exposure_"+param['expType']
    fileName += "_"+str(param['integrationTime'])+"sec"
-   fileName += "_"+param['dateCapture']+"_"+param['timeCapture']
-   fileName += "_"+param['expType']
+   fileName += "_ra"+str(param['ra'])+"_dec"+str(param['dec'])
    param['fileName'] = fileName
 
 
-
-
-def setHeaderOutputFile(param):
-   '''create header for output file
-   to log the requested parameters.
+def getLatestName(param, expType=None):
+   '''Set base name for "latests" output/pdf files.
    '''
-
-   headerOutputFile =  "Capture date = "+param['dateCapture']+"\n"
-   headerOutputFile += "Capture time = "+param['timeCapture']+"\n"
-
-   headerOutputFile += "Geographic coordinates:\n"
-   headerOutputFile += "lat = "+str(param['lat'])+" # [deg]\n"
-   headerOutputFile += "lon = "+str(param['lon'])+" # [deg]\n"
-
-   headerOutputFile += "Equatorial coordinates:\n"
-   headerOutputFile += "ra = "+str(param['ra'])+" # [deg]\n"
-   headerOutputFile += "dec = "+str(param['dec'])+" # [deg]\n"
-
-   headerOutputFile += "Exposure settings:\n"
-   headerOutputFile += "exposure type = "+str(param['expType'])+"\n"
-   headerOutputFile += "nSample = "+str(param['nSample'])+" # samples per call to the SDR\n"
-   headerOutputFile += "nBin = "+str(param['nBin'])+" # bin resolution power spectrum \n"
-   headerOutputFile += "gain = "+str(param['gain'])+" # [dB] of RtlSdr gain\n"
-   headerOutputFile += "sample rate = "+str(param['sampleRate'])+" # [Hz] controls bandwidth\n"
-   headerOutputFile += "centerFrequency = "+str(param['centerFrequency'])+" # [Hz] center frequency\n"
-   headerOutputFile += "integrationTime = "+str(param['integrationTime'])+" # [sec] integration time\n"
-   headerOutputFile += "alternateFrequency = "+str(param['throwFrequency'])+" # [Hz] alternate frequency\n"
-   headerOutputFile += "alternatingFrequency = "+str(param['alternatingFrequency'])+" # [Hz] alternating frequency\n"
-   headerOutputFile += "freq [Hz], power On [V^2/Hz], power Off [V^2/Hz]\n"
-
-   param['headerOutputFile'] = headerOutputFile
+   # File name
+   fileName = "latest"
+   if expType is None:
+      fileName += "_exposure_"+param['expType']
+   else:
+      fileName += "_exposure_"+expType
+   fileName += "_"+str(param['integrationTime'])+"sec"
+   return fileName
 
 
 #################################################################
@@ -340,6 +347,7 @@ def biasTOn():
    except:
       print('Failed to turn on bias T')
 
+
 def biasTOff():
    '''Turn off the bias T,
    to power off the LNA.
@@ -350,15 +358,13 @@ def biasTOff():
       print('Failed to turn off bias T')
 
 
-
-
 def takeExposure(param):
 
    try:
       # get f [Hz], p [V^2/Hz]
       tStart = time.time()
       #
-      if param['expType']=='fOn':
+      if param['expType']=='on' or param['expType']=='hot' or param['expType']=='cold':
          f, p = col.run_spectrum_int(param['nSample'], 
                                      param['nBin'], 
                                      param['gain'], 
@@ -369,7 +375,7 @@ def takeExposure(param):
          param['pOn'] = p
          param['expStatus'] = True
       #
-      elif param['expType']=='fOff':
+      elif param['expType']=='foff':
          f, p = col.run_spectrum_int(param['nSample'], 
                                      param['nBin'], 
                                      param['gain'], 
@@ -380,7 +386,7 @@ def takeExposure(param):
          param['pOff'] = p
          param['expStatus'] = True
       #
-      elif param['expType']=='fSwitch':
+      elif param['expType']=='fswitch':
          fOn, pOn, fOff, pOff = col.run_fswitch_int(param['nSample'], 
                                     param['nBin'], 
                                     param['gain'], 
@@ -408,52 +414,157 @@ def takeExposure(param):
 
 
 
-def saveYaml(param):
-   # save the exposure parameters
-   with open(param['pathOut']+"/"+param['fileName']+".yaml", 'w') as file:
-      yaml.dump(param, file, sort_keys=False)
-      print('Saved yaml file')
+def calibrateHotCold(p, pH, pC, tH, tC):
+   '''compute calibrated temperature spectum t [K]
+   from power spectra p, pH, pC [any unit]
+   measured at temperatures t, tH, tC [K].
+   Assumes
+   p = factor * (t + tOffset)
+   '''
+   # Solve for affine parameters
+   factor = (pH - pC) / (tH - tC)  # [dimless]
+   tOffset = (tH * pC - tC * pH) / (pH - pC) # [K]
+   # invert the power to temperature relation
+   t = p / factor - tOffset   # [K]
+   return t
 
 
-def saveData(param):
-   # Check if the exposure was successfully acquired
-   if param['expStatus']:
-      # save the power spectrum
-      if param['expType']=='fOn':
-         data = np.column_stack((param['fOn'], 
-                                 param['pOn']))
-      elif param['expType']=='fOff':
-         data = np.column_stack((param['fOff'], 
-                                 param['pOff']))
-      elif param['expType']=='fSwitch':
-         data = np.column_stack((param['fOn'], 
-                                 param['pOn'],
-                                 param['fOff'],
-                                 param['pOff']))
-      np.savetxt(param['pathOut']+"/"+param['fileName']+".txt", 
-                 data, 
-                 header=param['headerOutputFile'])
+def calibratePartial(p, pRef, tRef):
+   '''compute partially-calibrated temperature spectrum t [K]
+   from power spectrum p [au],
+   based on a reference power spectrum pRef [au]
+   measured at temperature tRef [K].
+   Assumes
+   p = factor * t
+   '''
+   t = tRef * p / pRef  # [K]
+   return t
+
+
+def attemptCalibration(param):
+   '''Check if a latest hot and/or cold exposure
+   exists in the output folder.
+   If so, use them/it for complete/partial calibration.
+   '''
+   # flag to indicate if calibrations are possible
+   partialCalib = False
+   fullCalib = True
+
+   # check if cold exposure exists
+   pathCold = param['pathOut']+'/'+getLatestName(param, expType='cold')+'.json'
+   if os.path.exists(pathCold):
+      paramCold = json.loadJson(pathCold)
+      param['pCold'] = paramCold['pOn']
+      partialCalib = True
+   else:
+      fullCalib = False
+
+   # check if hot exposure exists
+   pathHot = param['pathOut']+'/'+getLatestName(param, expType='hot')+'.json'
+   if os.path.exists(pathHot):
+      paramHot = json.loadJson(pathHot)
+      param['pHot'] = paramHot['pOn']
+      partialCalib = True
+   else:
+      fullCalib = False
+
+   # perform full calibration if possible
+   if fullCalib:
+      param['tCalibratedHotCold'] = calibrateHotCold(param['pOn'], 
+            param['pHot'], 
+            param['pCold'], 
+            300., # tHot [K] 
+            20.)  # tCold [K]
+   # else perform partial calibration if possible
+   elif partialCalib:
+      if 'pCold' in param:
+         pRef = param['pCold']
+         param['tCalibratedCold'] = calibratePartial(param['pOn'], 
+               pRef, 
+               20.)  # tCold [K]
+      elif 'pHot' in param:
+         pRef = param['pHot']
+         param['tCalibratedHot'] = calibratePartial(param['pOn'], 
+               pRef, 
+               300.)  # tCold [K]
+
+
+
+def saveJson(param):
+   # save all parameters and data
+   path = param['pathOut']+"/"+param['fileName']+".json"
+   json.saveJson(param, path)
+
+   # also save to/overwrite the "latest"
+   path = param['pathOut']+"/"+getLatestName(param)+".json"
+   json.saveJson(param, path)
+
+
+
+
+def plot(f, p, label=None, yLabel=r'Uncalibrated intensity [au]'):
+    fig=plt.figure(0)
+    ax=fig.add_subplot(111)
+    #
+    ax.axvline(0., c='k', label=r'$\nu^0_\text{21cm}$')
+    #
+    x = (f - nu21cm) / 1.e6 # [MHz]
+    ax.plot(x, p, label=label)
+    #
+    ax.legend(loc=2)
+    ax.set_xlabel(r'$\nu - \nu^0_\text{21cm}$ [MHz]')
+    ax.set_ylabel(yLabel)
+    #
+    # Add alternate x axis showing velocities
+    ax2 = ax.twiny()
+    ax2.set_xticks(ax.get_xticks())
+    ax2.set_xticklabels( np.round(ax.get_xticks()*1.e6/nu21cm * c * 1.e-3, 1))
+    ax2.set_xlabel(r'$v_\text{LOS}$ [km/s]')
+    return fig, ax, ax2
+
 
 def savePlot(param):
-   # Check if the exposure was successfully acquired
+   # Generate plots only if the exposure was successfully acquired
    if param['expStatus']:
-      fig=plt.figure(0)
-      ax=fig.add_subplot(111)
-      #
-      if param['expType']=='fOn':
-         ax.semilogy(param['fOn'], param['pOn'], label=r'On')
-      elif param['expType']=='fOff':
-         ax.semilogy(param['fOff'], param['pOff'], label=r'Off')
-      elif param['expType']=='fSwitch':
-         ax.semilogy(param['fOn'], param['pOn'], label=r'On')
-         ax.semilogy(param['fOff'], param['pOff'], label=r'Off')
-      #
-      ax.legend(loc=1)
-      ax.set_xlabel(r'freq [Hz]')
-      ax.set_ylabel(r'P [V^2/Hz]')
+      if param['expType']=='on' or param['expType']=='hot' or param['expType']=='cold':
+         fig, ax, ax2 = plot(param['fOn'], param['pOn'], label=param['expType'], yLabel=r'P [V$^2$/Hz]')
+      elif param['expType']=='foff':
+         fig, ax, ax2 = plot(param['fOff'], param['pOff'], label=r'fOff', yLabel=r'P [V$^2$/Hz]')
+      elif param['expType']=='fswitch':
+         fig, ax, ax2 = plot(param['fOn'], param['pOn'], label=r'on', yLabel=r'P [V$^2$/Hz]')
+         ax.plot(param['fOff'], param['pOff'], label=r'fOff')
+      
+      # if the exposure and on, and hot and/or cold exposures are available,
+      # then overplot them.
+      if param['expType']=='on':
+         for key in set(param.keys()) & {'pCold', 'pHot'}:
+            ax.plot((param['fOn'] - nu21cm) / 1.e6, param[key], '--', label=key)
+            ax.legend(loc=2)
+
+      # save to unique file name
       fig.savefig(param['pathFig']+"/"+param['fileName']+".pdf", bbox_inches='tight')
-      #fig.show()
+      # also save to/overwrite the "latest"
+      fig.savefig(param['pathFig']+"/"+getLatestName(param)+".pdf", bbox_inches='tight')
+      #
       fig.clf()
+
+
+      # If calibrated or partially calibrated temperature spectra are avilable,
+      # plot them
+      for key in set(param.keys()) & {'tCalibratedHotCold', 'tCalibratedHot', 'tCalibratedCold'}:
+         fig, ax, ax2 = plot(param['fOn'], param[key], label=key, yLabel=r'Antenna temperature [K]')
+      
+         # save to unique file name
+         fig.savefig(param['pathFig']+"/"+param['fileName']+"_"+key+".pdf", bbox_inches='tight')
+         # also save to/overwrite the "latest"
+         fig.savefig(param['pathFig']+"/"+getLatestName(param)+"_"+key+".pdf", bbox_inches='tight')
+         #
+         fig.clf()
+
+
+
+
+
 
 
 #####################################################
@@ -475,10 +586,12 @@ if __name__=="__main__":
    # Change exposure time if desired
    param['integrationTime'] = 5 #5*60  # [sec]
 
-   # Choose center frequency: 'fOn', 'fOff', 'fSwitch'
-   setExpType(param, 'fOn')
-   #setExpType(param, 'fOff')
-   #setExpType(param, 'fSwitch')
+   setExpType(param, 'on')
+   #setExpType(param, 'foff')
+   #setExpType(param, 'fswitch')
+   #d21.setExpType(param, 'cold')
+   #d21.setExpType(param, 'hot')
+
 
    setDate(param)
    setTime(param)
@@ -486,12 +599,11 @@ if __name__=="__main__":
 
    setOutputFigDir(param)
    setFileName(param)
-   setHeaderOutputFile(param)
    
    takeExposure(param)
+   attemptCalibration(param)
 
-   saveYaml(param)
-   saveData(param)
+   saveJson(param)
    savePlot(param)
 
    # Turn off bias T to power off LNA
