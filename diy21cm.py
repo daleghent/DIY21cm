@@ -9,6 +9,7 @@ import numpy as np, matplotlib.pyplot as plt
 import time, logging, os
 from datetime import datetime
 import json_io as json
+import subprocess # to run shell commands
 
 # To communicate with mount and get ra, dec
 import PyIndi
@@ -93,6 +94,8 @@ def setTimeSameDate(param, paramStart):
    nDays = (datetime.today() - datetime.strptime(paramStart['dateCapture'], "%Y%m%d")).days
    # Find the position of 'h' in time string
    h_index = param['timeCapture'].index('h')
+   m_index = param['timeCapture'].index('m')
+   s_index = param['timeCapture'].index('s')
    # extract the hours, minutes and seconds
    hours = int(param['timeCapture'][:h_index])
    minutes = int(param['timeCapture'][h_index + 1:m_index])
@@ -534,7 +537,7 @@ def savePlot(param):
          fig, ax, ax2 = plot(param['fOn'], param['pOn'], label=r'on', yLabel=r'P [V$^2$/Hz]')
          ax.plot(param['fOff'], param['pOff'], label=r'fOff')
       
-      # if the exposure and on, and hot and/or cold exposures are available,
+      # if the exposure is on, and hot and/or cold exposures are available,
       # then overplot them.
       if param['expType']=='on':
          for key in set(param.keys()) & {'pCold', 'pHot'}:
@@ -561,8 +564,20 @@ def savePlot(param):
          #
          fig.clf()
 
+def saveScreenshot(param):
+   '''Save a screenshot to the figures folder.
+   Useful in transiting mode, to generate a timelapse.
+   '''
+   # Save screenshot in figures folder
+   screenshotPath = param['pathFig']+"/"+param['fileName']+"_"+"scrot.png"
 
-
+   try:
+      result = subprocess.run(['scrot', screenshotPath], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      print(f"Screenshot saved to {screenshotPath}")
+   except subprocess.CalledProcessError as e:
+      print(f"Error occurred: {e.stderr.decode()}")
+   except FileNotFoundError:
+      print("scrot command not found. Make sure scrot is installed and in your PATH.")
 
 
 

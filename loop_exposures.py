@@ -17,34 +17,45 @@ d21.setDate(paramStart)
 # Take repeated exposures
 while(True):
 
-   # For each exposure
-   param = d21.getDefaultParams()
+   try:
+      # For each exposure
+      param = d21.getDefaultParams()
 
-   # Change exposure time if desired
-   param['integrationTime'] = 5 #5*60  # [sec]
+      # Change exposure time if desired
+      param['integrationTime'] = 5 #5*60  # [sec]
 
-   d21.setExpType(param, 'on')
-   #d21.setExpType(param, 'foff')
-   #d21.setExpType(param, 'fswitch')
+      d21.setExpType(param, 'on')
+      #V}d21.setExpType(param, 'foff')
+      #d21.setExpType(param, 'fswitch')
+      #d21.setExpType(param, 'cold')
+      #d21.setExpType(param, 'hot')
 
-   # set the same date as the start ofthe observing session,
-   # and add 24 to the hours for each dday elapsed
-   d21.setTimeSameDate(param, paramStart)
 
-   d21.setMountInfo(param)
+      # set the same date as the start ofthe observing session,
+      # and add 24 to the hours for each day elapsed
+      # this way all output files are in the same folder,
+      # even if we cross midnight
+      d21.setTimeSameDate(param, paramStart)
 
-   d21.setOutputFigDir(param)
-   d21.setFileName(param)
+      d21.setMountInfo(param)
 
-   d21.takeExposure(param)
-   d21.attemptCalibration(param)
+      d21.setOutputFigDir(param)
+      d21.setFileName(param)
 
-   d21.saveJson(param)
-   d21.savePlot(param)
+      d21.takeExposure(param)
+      d21.attemptCalibration(param)
 
-   # take a screenshot for the timelapse
-   #d21.os.system('scrot')
+      d21.saveJson(param)
+      d21.savePlot(param)
 
+      # take a screenshot for the timelapse
+      # after some time, so the open figures
+      # have time to update
+      d21.time.sleep(5) # delay in [sec]
+      d21.saveScreenshot(param)
+
+   except:
+      print("Something went wrong with this exposure. Trying again")
 
 # Turn off bias T to power off LNA
 #d21.biasTOff()

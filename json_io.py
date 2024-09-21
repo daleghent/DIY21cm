@@ -11,6 +11,8 @@ def convert_dict(data):
    for key, value in data.items():
       if isinstance(value, np.ndarray):
          data_converted[key] = value.tolist()
+      else:
+         data_converted[key] = value
    return data_converted
 
 
@@ -21,6 +23,8 @@ def recover_dict(data):
       if isinstance(value, list):
          # For simplicity, we'll assume any list should be converted to a NumPy array
          data[key] = np.array(value)
+      else:
+         data[key] = value
    return data
 
 
