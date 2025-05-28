@@ -12,8 +12,6 @@ paramStart = d21.getDefaultParams()
 d21.setDate(paramStart)
 
 
-
-
 # Take repeated exposures
 while(True):
 
@@ -22,7 +20,7 @@ while(True):
       param = d21.getDefaultParams()
 
       # Change exposure time if desired
-      param['integrationTime'] = 5 #5*60  # [sec]
+      param['integrationTime'] = 5*60  # [sec]
 
       d21.setExpType(param, 'on')
       #V}d21.setExpType(param, 'foff')
@@ -55,7 +53,7 @@ while(True):
       d21.saveScreenshot(param)
 
    except:
-      print("Something went wrong with this exposure. Trying again")
+      print("Something went wrong with this exposure. Trying again...")
 
 # Turn off bias T to power off LNA
 #d21.biasTOff()

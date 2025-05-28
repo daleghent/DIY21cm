@@ -4,6 +4,11 @@
 # indiserver indi_simulator_telescope
 
 import numpy as np, matplotlib.pyplot as plt
+# for colormaps in plots
+from matplotlib import cm
+from matplotlib.colors import Normalize
+# to format the labels of tick marks
+from matplotlib.ticker import FuncFormatter
 
 # for logging
 import time, logging, os
@@ -503,27 +508,59 @@ def saveJson(param):
    json.saveJson(param, path)
 
 
-
-
 def plot(f, p, label=None, yLabel=r'Uncalibrated intensity [au]'):
     fig=plt.figure(0)
     ax=fig.add_subplot(111)
     #
     ax.axvline(0., c='k', label=r'$\nu^0_\text{21cm}$')
-    #
-    x = (f - nu21cm) / 1.e6 # [MHz]
-    ax.plot(x, p, label=label)
-    #
+
+    # Plot the data, or the list of data
+    # Color map for the curves
+    cmap = cm.viridis  # You can choose other colormaps like 'plasma', 'inferno', etc.
+    norm = Normalize(vmin=0, vmax=max(len(f), len(p)) - 1)  # Normalize based on number of datasets
+
+    # Handle different types of f and p
+    if isinstance(f, list):  # f is a list of 1D arrays
+        if len(f) != len(p):
+            raise ValueError("f and p must have the same length if they are lists.")
+        for i, (f_arr, p_arr) in enumerate(zip(f, p)):
+            color = cmap(norm(i))  # Get color based on index
+            x = (f_arr - nu21cm) / 1.e6  # Convert to MHz
+            ax.plot(x, p_arr, label=label, color=color)
+
+    elif isinstance(f, np.ndarray):  # f is a 1D or 2D numpy array
+        if f.ndim == 1:  # f is a 1D array
+            x = (f - nu21cm) / 1.e6  # Convert to MHz
+            ax.plot(x, p, label=label)
+        elif f.ndim == 2:  # f is a 2D array (list of 1D arrays)
+            if f.shape[0] != p.shape[0]:
+                raise ValueError("f and p must have the same number of rows if they are 2D arrays.")
+            for i, (f_arr, p_arr) in enumerate(zip(f, p)):
+                color = cmap(norm(i))  # Get color based on index
+                x = (f_arr - nu21cm) / 1.e6  # Convert to MHz
+                ax.plot(x, p_arr, label=label, color=color)
+    else:
+        raise TypeError("f must be either a list, 1D numpy array, or 2D numpy array.")
+
     ax.legend(loc=2)
     ax.set_xlabel(r'$\nu - \nu^0_\text{21cm}$ [MHz]')
     ax.set_ylabel(yLabel)
     #
     # Add alternate x axis showing velocities
-    ax2 = ax.twiny()
-    ax2.set_xticks(ax.get_xticks())
-    ax2.set_xticklabels( np.round(ax.get_xticks()*1.e6/nu21cm * c * 1.e-3, 1))
+    x_to_vel = lambda x: (x * 1.e6 / nu21cm) * c * 1.e-3  # Convert frequency to velocity (km/s)
+    vel_to_x = lambda v: v / 1.e6 * nu21cm / c / 1.e-3
+    #
+    ax2 = ax.secondary_xaxis('top', functions=(x_to_vel, vel_to_x))
     ax2.set_xlabel(r'$v_\text{LOS}$ [km/s]')
+    # Optional: Customize tick labels using FuncFormatter
+    ax2.xaxis.set_major_formatter(FuncFormatter(lambda val, pos: f'{val:.1f}'))  # Optional rounding
+
+
     return fig, ax, ax2
+
+
+
+
 
 
 def savePlot(param):

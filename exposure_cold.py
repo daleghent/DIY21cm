@@ -8,7 +8,7 @@ d21.biasTOn()
 param = d21.getDefaultParams()
 
 # Change exposure time if desired
-param['integrationTime'] = 5 #5*60  # [sec]
+param['integrationTime'] = 5*60  # [sec]
 
 #d21.setExpType(param, 'on')
 #d21.setExpType(param, 'foff')

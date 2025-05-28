@@ -35,7 +35,7 @@ def saveJson(param, path):
    # save all parameters and data
    with open(path, 'w') as f:
       json.dump(param_converted, f)
-      print('Saved json file')
+      #print('Saved json file')
 
 
 def loadJson(path):
@@ -45,7 +45,7 @@ def loadJson(path):
 
    # convert the lists back to numpy arrays
    param = recover_dict(param_loaded)
-   print('Loaded json file')
+   #print('Loaded json file')
 
    return param
 
