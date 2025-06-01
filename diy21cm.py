@@ -2,6 +2,7 @@
 # Before running this python script,
 # start an INDI server, either in ekos gui, or with the command line:
 # indiserver indi_simulator_telescope
+# I want to add another comment here as well
 
 import numpy as np, matplotlib.pyplot as plt
 # for colormaps in plots

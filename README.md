@@ -6,7 +6,7 @@ and measure the rotation profile via the Doppler effect.
 The setup is: 
 WIFI antenna --> LNA --> RTL-SDR --> mini PC running Kubuntu.
 
-## Installing the dependencies on Kubuntu:
+## Installing the dependencies on Regular Ubuntu or Debian:
 
 ### rtl-sdr package
 
